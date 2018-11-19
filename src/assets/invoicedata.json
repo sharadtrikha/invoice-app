@@ -1,0 +1,48 @@
+{
+    "invoiceData": [
+        {
+            "id": "2",
+            "customer": {
+                "name": "Sharad",
+                "address": "B25 khaksha complex bhopal",
+                "emailId": "sharad@gmail.com",
+                "mobileNumber": 7723996691,
+                "pincode": 462001
+            },
+            "discount": 12,
+            "tax": 10,
+            "items": [
+                {
+                    "item": "Item 1",
+                    "price": 300,
+                    "quantity": 2
+                }
+            ],
+            "timeStamp": "1542563585666",
+            "grandTotal": 300,
+            "subTotal": 300
+        },
+        {
+            "id": "1",
+            "customer": {
+                "name": "Vikas",
+                "address": "B25 khaksha complex bhopal",
+                "emailId": "sharad@gmail.com",
+                "mobileNumber": 7723996691,
+                "pincode": 462001
+            },
+            "discount": 12,
+            "tax": 10,
+            "items": [
+                {
+                    "item": "Item 1",
+                    "price": 300,
+                    "quantity": 3
+                }
+            ],
+            "timeStamp": "1542563585666",
+            "grandTotal": 500,
+            "subTotal": 300
+        }
+    ]
+}

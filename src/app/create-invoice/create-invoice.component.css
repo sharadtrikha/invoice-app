@@ -1,0 +1,309 @@
+.create-invoice-container {
+}
+
+.skip-button {
+  background-color: #efefef;
+  outline: none;
+  border: none;
+  padding: 0.55rem 1.2rem;
+  color: #66a7ff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.skip-button > img {
+  margin-left: 0.5rem;
+}
+
+.customer-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 8px;
+  border-bottom: 1px solid #cfcfcf;
+  margin: 0 20px;
+}
+.customer-details-header > span {
+  color: #3b424b;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.customer-details-form {
+  padding-top: 18px;
+}
+
+.top-panel {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.name-section,
+.bottom-panel-left {
+  flex-basis: 55%;
+}
+
+.phone-number-section,
+.bottom-panel-right {
+  flex-basis: 40%;
+}
+
+.bottom-panel {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.pincode-section {
+  width: 50%;
+}
+
+.submit-form-section {
+  padding: 15px 0;
+  background-color: #efefef;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-button {
+  margin-right: 20px;
+}
+.btn-accent {
+  background: #66a7ff;
+  color: white;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: 0;
+  width: 180px;
+  border-radius: 4px;
+}
+
+.customer-filled-details-panel {
+  display: flex;
+  align-items: center;
+}
+
+.customer-name {
+  margin: 0.5rem 0;
+}
+
+.display-none {
+  display: none;
+}
+
+.edit-icon {
+  background: url('../../assets/edit.png') top right no-repeat;
+  width: 34px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.input-invoice-data form input {
+  margin-right: 0.75rem;
+}
+
+.enter-invoice-data-icon {
+  background: url('../../assets/enter-icon.png') top left no-repeat;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  background-position: center;
+}
+.btn-bordered {
+  outline: 0;
+  border: 1px solid #66a7ff;
+  color: #66a7ff;
+  padding: 0 1rem;
+  border-radius: 4px;
+}
+
+.invoice-items-form {
+  height: 200px;
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 0 20px;
+}
+
+.m-0-20 {
+  margin: 0 20px;
+}
+.p-0-20 {
+  padding: 0 20px;
+}
+.p-20 {
+  padding: 20px;
+}
+.p-10-20 {
+  padding: 10px 20px;
+}
+.p-20-0 {
+  padding: 20px 0;
+}
+.ta-r {
+  text-align: right;
+}
+.border-top {
+  border-top: 1px solid #cfcfcf;
+}
+.border-bottom {
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.total-amount > .amount {
+  color: #3b424b;
+}
+.amount {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: #aaaaaa;
+}
+.amount::before {
+  content: '₹';
+  margin-right: 0.2rem;
+}
+
+.gray-bg {
+  background: #efefef;
+}
+
+.tax-input,
+.discount-input {
+  flex-basis: 35%;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.tax-input::after,
+.discount-input::after {
+  content: '%';
+  position: absolute;
+  right: 0;
+  margin-right: 0.5rem;
+  color: #3b424b;
+  font-size: 0.8rem;
+}
+
+/* input[type='number'][placeholder='Tax'],
+input[type='number'][placeholder='Discount'] {
+  margin: 0;
+  border: none;
+} */
+
+.sub-total {
+  margin-right: 40px;
+}
+.sub-total ~ span {
+  font-weight: 600;
+}
+.ruppee::before {
+  content: '₹';
+  margin-right: 0.5rem;
+}
+
+form.input-invoice-data-form {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+input.flex-30 {
+  flex-basis: 30%;
+  margin-right: 24px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+  line-height: 24px;
+  font-weight: 600;
+}
+label > .required {
+  color: red;
+}
+
+input::placeholder {
+  color: #cfcfcf;
+}
+
+.phone-number {
+  position: relative;
+}
+.phone-number > input {
+  padding-left: 4.75rem;
+}
+.phone-number::before {
+  width: 2rem;
+  content: '+91';
+  background: #efefef;
+  padding: 1rem;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  bottom: 1px;
+  display: flex;
+  align-items: center;
+  color: #aaaaaa;
+}
+
+input,
+textarea {
+  background-color: #ffffff;
+  border: 1px solid #cfcfcf;
+  font-size: 16px;
+  margin: 0;
+  outline: 0;
+  padding: 1rem 0.75rem;
+  height: 24px;
+  width: 100%;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  transition: all 0.2s ease;
+  letter-spacing: 1px;
+  border-radius: 4px;
+}
+.form-control {
+  margin-bottom: 16px;
+}
+
+textarea {
+  height: auto;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #0f868c;
+}
+
+/* input.ng-invalid.ng-touched{
+    border: 1px solid red;
+} */
+
+.uppercase {
+  text-transform: uppercase;
+}
+.table-header {
+  display: flex;
+}
+.table-header > div:last-child,
+.table-body .row > div:last-child {
+  text-align: right;
+}
+.table-header > div {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #aaaaaa;
+}
+
+.row {
+  display: flex;
+}

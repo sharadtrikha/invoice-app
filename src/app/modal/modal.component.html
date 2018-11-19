@@ -1,0 +1,19 @@
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>
+        {{ modalHeader }}
+        <span class="modal-sub-header">{{ subModalHeader }}</span>
+      </h2>
+      <button class="modal-close" (click)="closeModal()">
+        <img src="./../../assets/close-btn.png" alt="close button" />
+      </button>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+
+<div class="modal-background"></div>

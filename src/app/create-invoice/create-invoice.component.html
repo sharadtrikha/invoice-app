@@ -1,0 +1,250 @@
+<div class="create-invoice-container">
+    <div class="customer-details-container">
+      <!-- Customer details header -->
+      <div class="customer-details-header">
+        <span>{{
+          !customerFormSubmitted ? 'Customer Details' : 'Product Details'
+        }}</span>
+        <button
+          class="skip-button"
+          *ngIf="!customerFormSubmitted"
+          (click)="onSkipClicked()"
+        >
+          Skip <img src="./../../assets/skip-icon.png" alt="skip button" />
+        </button>
+  
+        <ng-container *ngIf="customerFormSubmitted">
+          <div class="customer-filled-details-panel ta-r">
+            <div class="customer-details">
+              <h5 class="uppercase small font-light-gray">Customer Details</h5>
+              <div class="customer-name">{{ customer.name }}</div>
+              <span class="font-light-gray lowercase">{{
+                customer.emailId
+              }}</span>
+            </div>
+            <i class="edit-icon" (click)="onEditCustomerDetails()"></i>
+          </div>
+        </ng-container>
+      </div>
+  
+      <!-- Customer details main section -->
+      <div *ngIf="!customerFormSubmitted" class="customer-details-form">
+        <form (ngSubmit)="onCustomerFormSubmit()" #customerForm="ngForm">
+          <div class="top-panel">
+            <div class="name-section form-control">
+              <label for="name">
+                Full Name <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Customer Name"
+                [(ngModel)]="customer.name"
+                required
+              />
+            </div>
+  
+            <div class="phone-number-section form-control">
+              <label for="phone_number">
+                Phone Number <span class="required">*</span>
+              </label>
+              <div class="phone-number">
+                <input
+                  type="number"
+                  id="phone_number"
+                  name="mobileNumber"
+                  [(ngModel)]="customer.mobileNumber"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="bottom-panel">
+            <div class="bottom-panel-left">
+              <div class="address-section form-control">
+                <label for="address">Address</label>
+                <textarea
+                  rows="4"
+                  id="address"
+                  name="address"
+                  [(ngModel)]="customer.address"
+                ></textarea>
+              </div>
+            </div>
+  
+            <div class="bottom-panel-right">
+              <div class="email-section form-control">
+                <label for="email_id">
+                  Email ID <span class="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email_id"
+                  name="emailId"
+                  [(ngModel)]="customer.emailId"
+                  required
+                  email
+                />
+              </div>
+  
+              <div class="pincode-section form-control">
+                <label for="pincode">Pincode</label>
+                <input
+                  type="text"
+                  id="pincode"
+                  name="pincode"
+                  [(ngModel)]="customer.pincode"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="submit-form-section">
+            <button
+              class="submit-button btn-accent"
+              type="submit"
+              [disabled]="!customerForm.valid"
+            >
+              Proceed
+            </button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Invoice items main section -->
+      <ng-container *ngIf="customerFormSubmitted">
+        <div class="invoice-items-form">
+          <!-- Invoice Details table -->
+          <div class="table">
+            <div
+              class="table-header p-10-20 border-bottom"
+              *ngIf="headers && headers.length > 0"
+            >
+              <ng-container *ngFor="let header of headers">
+                <div [ngStyle]="{ 'flex-basis': header.size }">
+                  {{ header.key }}
+                </div>
+              </ng-container>
+            </div>
+            <div class="table-body" *ngIf="invoiceData && invoiceData.length > 0">
+              <div
+                class="row p-10-20 border-bottom"
+                *ngFor="let data of invoiceData"
+              >
+                <ng-container *ngFor="let col of data.row; let idx = index">
+                  <div
+                    [ngStyle]="{
+                      'flex-basis': headers[idx].size
+                    }"
+                  >
+                    {{ col.value }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Invoice data input section -->
+          <div class="input-invoice-data">
+            <form
+              class="input-invoice-data-form"
+              (ngSubmit)="onInvoiceDataSubmit(invoiceDataForm)"
+              #invoiceDataForm="ngForm"
+            >
+              <input
+                type="text"
+                class="flex-60"
+                placeholder="Please enter item name"
+                name="item"
+                #itemName
+                ngModel
+                required
+              />
+              <input
+                type="number"
+                placeholder="0.00"
+                min="1"
+                class="flex-20"
+                pattern="\d+"
+                name="quantity"
+                ngModel
+                required
+              />
+              <div class="flex flex-jc-sb flex-20">
+                <input
+                  type="number"
+                  placeholder="0.00"
+                  min="0"
+                  name="price"
+                  (keydown.tab)="onInvoiceDataSubmit(invoiceDataForm)"
+                  ngModel
+                  required
+                />
+                <button
+                  type="submit"
+                  class="enter-invoice-data-icon btn-bordered"
+                  (click)="onInvoiceDataSubmit(invoiceDataForm)"
+                ></button>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <!-- Tax and discount calculation section -->
+        <div class="flex flex-jc-sb flex-ai-c m-0-20 p-20-0 border-top">
+          <div class="flex">
+            <div class="tax-input">
+              <input
+                type="number"
+                placeholder="Tax"
+                min="0"
+                #tax
+                (change)="onTaxChange(tax.value)"
+              />
+            </div>
+            <div class="discount-input">
+              <input
+                type="number"
+                placeholder="Discount"
+                min="0"
+                max="100"
+                #discount
+                (change)="onDiscountChange(discount.value)"
+              />
+            </div>
+          </div>
+          <div class="flex small">
+            <span class="sub-total">Sub Total</span>
+            <span class="ruppee">{{ subTotalAmount }}</span>
+          </div>
+        </div>
+  
+        <!-- Final cart Amount section -->
+        <div class="flex flex-jc-sb p-20 gray-bg">
+          <div class="flex flex-jc-sb flex-basis-6">
+            <div class="tax-calcuate">
+              <p>Tax</p>
+              <p class="amount">{{ taxAmount }}</p>
+            </div>
+            <div
+              class="tax-discount-calculation-section flex flex-jc-sb flex-basis-8"
+            >
+              <div class="discount-calcuate">
+                <p>Discount</p>
+                <p class="amount">{{ discountAmount }}</p>
+              </div>
+              <div class="grand-total-section">
+                <div class="total-amount">
+                  <p>Grand Total</p>
+                  <p class="amount">{{ totalAmount }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-accent" (click)="onSaveInvoice()">Save</button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  

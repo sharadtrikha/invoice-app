@@ -1,0 +1,17 @@
+<div class="invoice-list-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." #userInput (keyup)="onSearch(userInput.value)">
+  </div>
+
+  <ng-container *ngIf="listOfInvoice && listOfInvoice.length>0">
+    <div class="total-invoice">
+      INVOICES - <span>{{listOfInvoice.length}}</span>
+    </div>
+
+    <div class="invoice-list">
+      <ng-container *ngFor="let invoice of listOfInvoice">
+        <app-invoice [invoice]="invoice" (invoice-clicked)="onClickedInvoice($event)"></app-invoice>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

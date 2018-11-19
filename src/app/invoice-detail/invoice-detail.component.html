@@ -1,0 +1,139 @@
+<div class="invoice-detail-section">
+  <h3>Invoice Details</h3>
+</div>
+<div *ngIf="invoice" class="invoice-detail-container">
+  <div class="invoice-detail-inner-section">
+    <!-- Invoice detail header -->
+    <div class="invoice-detail-header">
+      <div class="invoice-info">
+        <h5>Invoice</h5>
+        <span># INV{{invoice.id}}</span>
+        <span>{{invoice.timestamp}}</span>
+
+      </div>
+      <div class="customer-info">
+        <div class="customer-details">
+          <h5>Customer Details</h5>
+          <span class="customer-name">{{invoice.customer.name}}</span>
+          <span class="customer-email">{{invoice.customer.emailId}}</span>
+        </div>
+        <button class="print-invoice">
+          <span>Print</span>
+          <svg class="icon icon-print" viewBox="0 0 485.212 485.212">
+            <rect x="151.636" y="363.906" width="151.618" height="30.331"></rect>
+            <path d="M121.312,30.327h242.595v60.651h30.321V30.327C394.229,13.595,380.666,0,363.907,0H121.312    c-16.748,0-30.327,13.595-30.327,30.327v60.651h30.327V30.327z"></path>
+            <rect x="151.636" y="303.257" width="181.939" height="30.327"></rect>
+            <path d="M454.882,121.304H30.334c-16.748,0-30.327,13.591-30.327,30.324v181.956c0,16.759,13.579,30.321,30.327,30.321h60.651    v90.98c0,16.764,13.579,30.326,30.327,30.326h242.595c16.759,0,30.321-13.562,30.321-30.326v-90.98h60.653    c16.76,0,30.322-13.562,30.322-30.321V151.628C485.204,134.895,471.642,121.304,454.882,121.304z M363.907,454.886H121.312V272.93    h242.595V454.886z M424.551,212.282c-16.76,0-30.322-13.564-30.322-30.327c0-16.731,13.562-30.327,30.322-30.327    c16.765,0,30.331,13.595,30.331,30.327C454.882,198.717,441.315,212.282,424.551,212.282z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!--Invoice items details section -->
+    <div class="invoice-item-details">
+      <!-- <table>
+        <thead>
+          <tr>
+            <th colspan="2">Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2">Prwan & chicken</td>
+            <td>2</td>
+            <td>640</td>
+          </tr>
+          <tr>
+            <td colspan="2">Prwan</td>
+            <td>1</td>
+            <td>240</td>
+          </tr>
+          <tr>
+            <td colspan="2">Prwan & chicken</td>
+            <td>2</td>
+            <td>640</td>
+          </tr>
+          <tr>
+            <td colspan="2">Prwan & chicken</td>
+            <td>2</td>
+            <td>640</td>
+          </tr>
+          <tr>
+            <td colspan="2">Prwan & chicken</td>
+            <td>2</td>
+            <td>640</td>
+          </tr>
+          <tr>
+            <td colspan="2">Prwan & chicken</td>
+            <td>2</td>
+            <td>640</td>
+          </tr>
+        </tbody>
+      </table> -->
+      <div class="table">
+        <div class="table-header p-14-20 border-bottom border-top" *ngIf="headers && headers.length > 0">
+          <ng-container *ngFor="let header of headers">
+            <div [ngStyle]="{ 'flex-basis': header.size }">
+              {{ header.key }}
+            </div>
+          </ng-container>
+        </div>
+        <div class="table-body" *ngIf="invoiceData && invoiceData.length > 0">
+          <div class="row p-14-20 border-bottom" *ngFor="let data of invoiceData">
+            <ng-container *ngFor="let col of data.row; let idx = index">
+              <div [ngStyle]="{
+                    'flex-basis': headers[idx].size
+                  }">
+                {{ col.value }}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!--Sub Total and Grand total section-->
+    <div class="price-section">
+      <!-- <table>
+        <tbody>
+          <tr class="border-none">
+            <td colspan="2"></td>
+            <td>Sub Total</td>
+            <td>4379,00</td>
+          </tr>
+          <tr class="border-none">
+            <td colspan="2"></td>
+            <td>Tax</td>
+            <td>437</td>
+          </tr>
+          <tr class="border-none">
+            <td colspan="2"></td>
+            <td>Discount</td>
+            <td>43</td>
+          </tr>
+          <tr class="border-none">
+            <td colspan="2"></td>
+            <td>Grand Total</td>
+            <td>4379,00</td>
+          </tr>
+        </tbody>
+      </table> -->
+      <div class="empty-div"></div>
+      <div class="invoice-cart-entities">
+        <span>Sub Total</span>
+        <span>Tax({{(invoice.tax*100)/invoice.subTotal}}%)</span>
+        <span>Discount</span>
+        <span class="grand-total">Grand Total</span>
+      </div>
+      <div class="invoice-cart-stats">
+        <span>&#8377; {{invoice.subTotal}}</span>
+        <span>&#8377; {{invoice.tax}}</span>
+        <span>&#8377; {{invoice.discount}}</span>
+        <span class="grand-total-amount">&#8377; {{invoice.grandTotal}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <header>
+    <h1>Dashboard</h1>
+  </header>
+
+  <div class="flex-container">
+      <ng-container *ngIf="invoiceList && invoiceList.length>0">
+    <div class="flex-item invoice-list">
+      <!-- <p (click)="openModal()">Click</p> -->
+      <!--Displays list of invoices-->
+      <app-invoice-list [invoice-list]="invoiceList" (selected-invoice)="onSelectedInvoice($event)"></app-invoice-list>
+    </div>
+    <div class="flex-item invoice-detail">
+      <!--Displays details of selected invoice-->
+      <app-invoice-detail [invoice-detail]="selectedInvoice"></app-invoice-detail>
+    </div>
+  </ng-container>
+  </div>
+
+  <button class="add-invoice-button" (click)="openModal()">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAAH6ji2bAAAAAXNSR0IArs4c6QAAAGtJREFUOBFjYBgA8B8IYNYywRjINIWCyEbB2ciWwgSx2gOTRKYZselGVoCXjU0z0VZjmIzNNJAiok0cQIXkh+Mg9DVGzGATALkbBLDJoYsRHTHoGnHxB7+B5CcIXH4mRhwSJaORgiOsqJ5sABURL/xZHYBJAAAAAElFTkSuQmCC"
+      alt="Add button">
+  </button>
+
+  <app-modal *ngIf="!modalState"  modal-header="Create New Invoice" sub-modal-header="order no: {{currentOrderIndex}}"
+   (close-modal)="onModalClose($event)">
+    <app-create-invoice (on-invoice-save)="onModalClose($event)"></app-create-invoice>
+  </app-modal>
+</div>
