@@ -45,7 +45,7 @@
       <div class="invoice-cart-stats flex flex-fd-col">
         <span>&#8377; {{invoice.cart.subTotal}}</span>
         <span>&#8377; {{invoice.cart.taxAmount}}</span>
-        <span>&#8377; {{invoice.cart.discountAmount}}</span>
+        <span>&#8377; <span class="dash-align">-</span>{{invoice.cart.discountAmount}}</span>
         <span class="grand-total-amount">&#8377; {{invoice.cart.grandTotal}}</span>
       </div>
     </div>

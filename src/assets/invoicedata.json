@@ -3,102 +3,41 @@
         {
             "id": "2",
             "customer": {
-                "name": "Sharad",
+                "name": "John Doe",
                 "address": "B25 khaksha complex bhopal",
-                "emailId": "sharad@gmail.com",
+                "emailId": "johndoe@serviceprovider.com",
                 "mobileNumber": 7723996691,
                 "pincode": 462001
             },
             "items": [
                 {
-                    "item": "Item 1",
+                    "item": "Prawn & Chicken Sui Mai",
                     "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
-                },{
-                    "item": "Item 1",
-                    "quantity": 2,
-                    "price": 300
+                    "price": 430.00
+                },
+                {
+                    "item": "Long Product Name With Two Lines",
+                    "quantity": 1,
+                    "price": 670.00
+                },
+                {
+                    "item": "Prawn & Chicken Sui Mai",
+                    "quantity": 3,
+                    "price": 430.00
+                },
+                {
+                    "item": "Long Product Name With Two Lines",
+                    "quantity": 6,
+                    "price": 1670.00
                 }
             ],
             "cart": {
-                "taxPercentage": 12.5,
-                "taxAmount": 150,
+                "taxPercentage": 12.36,
+                "taxAmount": 429.00,
                 "discountPercentage": 10,
-                "discountAmount": 122,
-                "subTotal": 300,
-                "grandTotal": 800
+                "discountAmount": 390.00,
+                "subTotal": 3200.00,
+                "grandTotal": 3509.00
             },
             "timeStamp": 1542563585666
         },
