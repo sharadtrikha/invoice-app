@@ -88,6 +88,13 @@
         <ng-container *ngIf="tableData && tableData.length>0">
           <app-table [columns-name]="headers" [table-data]="tableData" [custom-css]="'custom-table'"></app-table>
         </ng-container>
+
+        <div class="flex header-placeholder p-14-20" *ngIf="tableData && tableData.length===0">
+          <div class="text-uppercase flex-basis-6">Item</div>
+          <div class="text-uppercase flex-basis-2">Price</div>
+          <div class="text-uppercase flex-basis-2">quantity</div>
+        </div>
+
         <!-- Invoice data input section -->
         <div class="input-invoice-data">
           <form class="input-invoice-data-form" (ngSubmit)="onInvoiceDataSubmit(invoiceDataForm)" #invoiceDataForm="ngForm">
