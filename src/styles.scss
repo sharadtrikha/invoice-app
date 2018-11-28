@@ -1,45 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'variables';
 
+@import 'variables';
 .custom-table {
-    
-  &:first-child {
-      flex-basis: 60%;
-  }
-  &:nth-of-type(2){
-    flex-basis: 20%;
-    text-align: center;
+    &:first-child {
+        flex-basis: 60%;
     }
-  &:last-child {
-      flex-basis: 20%;
-      text-align: end;
-  }
+    &:nth-of-type(2) {
+        flex-basis: 20%;
+        text-align: center;
+    }
+    &:last-child {
+        flex-basis: 20%;
+        text-align: end;
+    }
+}
+
+.custom-table.header-cell {
+    &:last-child {
+        &:after {
+            content: " - ₹";
+        }
+    }
 }
 
 .selected {
-  background-color: #515963;
-  .invoice {
-      .invoice-id {
-          color: #fff;
-      }
-      .price {
-          color: #fff;
-      }
-  }
+    background-color: #515963;
+    .invoice {
+        .invoice-id {
+            color: #fff;
+        }
+        .price {
+            color: #fff;
+        }
+    }
 }
 
-html{
+html {
     box-sizing: border-box;
     font-size: 16px;
 }
 
-*{
+* {
     box-sizing: inherit;
     margin: 0;
     padding: 0;
 }
 
-body,button{
+body,
+button {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     word-spacing: 1px;
@@ -48,116 +56,132 @@ body,button{
 
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 /* Common paddings and margins */
+
 .m-0-20 {
-  margin: 0 20px;
+    margin: 0 20px;
 }
+
 .p-0-20 {
-  padding: 0 20px;
+    padding: 0 20px;
 }
+
 .p-20 {
-  padding: 20px;
+    padding: 20px;
 }
+
 .p-14-20 {
-  padding: 14px 20px;
+    padding: 14px 20px;
 }
+
 .p-20-0 {
-  padding: 20px 0;
+    padding: 20px 0;
 }
 
-.border-top{
-  border-top: 1px solid $border-color;
+.border-top {
+    border-top: 1px solid $border-color;
 }
 
-.border-bottom{
-  border-bottom: 1px solid $border-color;
+.border-bottom {
+    border-bottom: 1px solid $border-color;
 }
 
-.text-center{
-  text-align: center;
+.text-center {
+    text-align: center;
 }
 
-.text-uppercase{
-  text-transform: uppercase;
+.text-uppercase {
+    text-transform: uppercase;
 }
 
-.grey-color{
-  color: $grey-color;
+.grey-color {
+    color: $grey-color;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-.flex-fd-col{
-  flex-direction: column;
+.flex-fd-col {
+    flex-direction: column;
 }
 
-.flex-jc-sb{
+.flex-jc-sb {
     justify-content: space-between
 }
 
 .flex-basis-6 {
     flex-basis: 60%;
-  }
-  .flex-basis-2 {
+}
+
+.flex-basis-2 {
     flex-basis: 20%;
-  }
-  .flex-basis-6 {
+}
+
+.flex-basis-6 {
     flex-basis: 60%;
-  }
-  .flex-basis-8 {
+}
+
+.flex-basis-8 {
     flex-basis: 80%;
-  }
-  .flex-60 {
+}
+
+.flex-60 {
     flex-basis: 60%;
-  }
-  .flex-50 {
+}
+
+.flex-50 {
     flex-basis: 50%;
-  }
-  .flex-20 {
+}
+
+.flex-20 {
     flex-basis: 20%;
-  }
-  .flex-30 {
+}
+
+.flex-30 {
     flex-basis: 30%;
-  }
-  
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0;
-  }
-  
-  .small {
+}
+
+.small {
     font-size: 0.8rem;
-  }
-  
-  .uppercase.small {
+}
+
+.uppercase.small {
     font-size: 0.6rem;
-  }
-  .lowercase {
+}
+
+.lowercase {
     text-transform: lowercase;
-  }
-  
-  .font-light-gray {
+}
+
+.font-light-gray {
     color: #92979d;
-  }
-  button:disabled {
+}
+
+button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
-  }
+}
 
-  @media print{
-    .add-invoice-button,.invoice-list,.app-header,.print-invoice{
-      display: none !important;
+@media print {
+    .add-invoice-button,
+    .invoice-list,
+    .app-header,
+    .print-invoice {
+        display: none !important;
     }
-
-    .table-body{
-      max-height: none !important;
+    .table-body {
+        max-height: none !important;
     }
-  }
+}
