@@ -1,0 +1,33 @@
+.custom-table {
+    &:first-child {
+        flex-basis: 60%;
+    }
+    &:nth-of-type(2) {
+        flex-basis: 20%;
+        text-align: center;
+    }
+    &:last-child {
+        flex-basis: 20%;
+        text-align: end;
+    }
+}
+
+.custom-table.header-cell {
+    &:last-child {
+        &:after {
+            content: " - ₹";
+        }
+    }
+}
+
+.selected {
+    background-color: #515963;
+    .invoice {
+        .invoice-id {
+            color: #fff;
+        }
+        .price {
+            color: #fff;
+        }
+    }
+}

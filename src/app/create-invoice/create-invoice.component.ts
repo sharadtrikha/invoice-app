@@ -93,7 +93,7 @@ export class CreateInvoiceComponent implements OnInit {
   }
 
   onDiscountChange(value): void {
-    this.discountAmount = Math.round((value / 100) * this.subTotalAmount);
+    this.discountAmount = Math.round((value / 100) * this.totalAmount);
     this.onGrandTotalChange();
   }
 

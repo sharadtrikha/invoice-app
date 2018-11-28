@@ -5,7 +5,7 @@
       <span>{{
         (!customerDetailsSkipped && !customerFormSubmitted) ? 'Customer Details' : 'Product Details'
         }}</span>
-      <button class="skip-button" *ngIf="!customerDetailsSkipped && !customerFormSubmitted" (click)="onSkipClicked()">
+      <button class="skip-button cursor-pointer" *ngIf="!customerDetailsSkipped && !customerFormSubmitted" (click)="onSkipClicked()">
         Skip <img src="./../../assets/skip-icon.png" alt="skip button" />
       </button>
 
@@ -73,7 +73,8 @@
         </div>
 
         <div class="submit-form-section">
-          <button class="submit-button btn-accent" type="submit" [disabled]="!customerForm.valid">
+          <button [ngClass]="{'cursor-pointer':customerForm.valid}" class="submit-button btn-accent" type="submit"
+            [disabled]="!customerForm.valid">
             Proceed
           </button>
         </div>
@@ -142,7 +143,7 @@
             </div>
           </div>
         </div>
-        <button class="btn-accent" [disabled]="tableData && tableData.length===0" [ngStyle]="{'cursor': (tableData && tableData.length===0)?'not-allowed':''}"
+        <button class="btn-accent" [disabled]="tableData && tableData.length===0" [ngStyle]="{'cursor': (tableData && tableData.length===0)?'not-allowed':'pointer'}"
           (click)="onSaveInvoice()">Save</button>
       </div>
     </ng-container>

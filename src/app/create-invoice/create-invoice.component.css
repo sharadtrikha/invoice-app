@@ -124,9 +124,10 @@
 }
 
 .invoice-items-form {
-  height: 200px;
+  /* height: 200px;
   max-height: 280px;
-  overflow-y: auto;
+  overflow-y: auto; */
+  min-height: 200px;
   margin: 0 20px;
 }
 

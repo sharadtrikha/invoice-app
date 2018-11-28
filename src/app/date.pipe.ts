@@ -14,8 +14,7 @@ export class CustomDatePipe implements PipeTransform {
     if ((currentDate.getDate() === inputDate.getDate()) &&
       (currentDate.getMonth() === inputDate.getMonth()) &&
       (currentDate.getFullYear() === inputDate.getFullYear())) {
-        debugger
-        const res_ = (this.datePipe.transform(value, 'shortTime') + ' - Today')
+      const res_ = (this.datePipe.transform(value, 'shortTime') + ' - Today')
       return res_;
     } else {
       return this.datePipe.transform(value, 'h:mm a - M/d/yy');
