@@ -5,12 +5,14 @@ import { InvoiceService } from '../services/invoice.service';
 @Component({
   selector: 'app-invoice-list',
   templateUrl: './invoice-list.component.html',
-  styleUrls: ['./invoice-list.component.css']
+  styleUrls: ['./invoice-list.component.scss']
 })
 export class InvoiceListComponent implements OnInit {
 
   @Input('invoice-list') listOfInvoice: Array<Invoice> = [];
-  @Output('selected-invoice') selectedInvoice: EventEmitter<Invoice> = new EventEmitter();
+  @Output('selected-invoice') selectedInvoice$: EventEmitter<Invoice> = new EventEmitter();
+  public selectedInvoice: Invoice;
+
 
   constructor(private _invoiceService: InvoiceService) { }
 
@@ -27,7 +29,8 @@ export class InvoiceListComponent implements OnInit {
 
   public onClickedInvoice(invoice: Invoice) {
     console.log(invoice);
-    this.selectedInvoice.emit(invoice);
+    this.selectedInvoice = invoice;
+    this.selectedInvoice$.emit(invoice);
   }
 
   public sortByDate() {
@@ -35,6 +38,9 @@ export class InvoiceListComponent implements OnInit {
       return b.timeStamp - a.timeStamp;
     });
     localStorage.clear();
+    if(!this.selectedInvoice){
+      this.selectedInvoice = this.listOfInvoice[0];
+    }
     const invoiceListObject = {
       invoiceData: this.listOfInvoice
     }

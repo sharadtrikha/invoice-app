@@ -1,23 +1,23 @@
-<div class="invoice-detail-section">
+<div class="invoice-detail-section flex flex-jc-sb text-uppercase">
   <h3>Invoice Details</h3>
 </div>
 <div *ngIf="invoice" class="invoice-detail-container">
   <div class="invoice-detail-inner-section">
     <!-- Invoice detail header -->
-    <div class="invoice-detail-header">
-      <div class="invoice-info">
-        <h5>Invoice</h5>
+    <div class="invoice-detail-header flex flex-jc-sb">
+      <div class="invoice-info flex flex-fd-col">
+        <h5 class="invoice-header text-uppercase">Invoice</h5>
         <span># INV{{invoice.id}}</span>
-        <span>{{invoice.timestamp}}</span>
+        <span class="invoice-time grey-color">{{invoice.timeStamp | datePipe}}</span>
 
       </div>
-      <div class="customer-info">
-        <div class="customer-details">
+      <div class="customer-info flex">
+        <div class="customer-details flex flex-fd-col">
           <h5>Customer Details</h5>
           <span class="customer-name">{{invoice.customer.name}}</span>
-          <span class="customer-email">{{invoice.customer.emailId}}</span>
+          <span class="customer-email grey-color">{{invoice.customer.emailId}}</span>
         </div>
-        <button class="print-invoice">
+        <button class="print-invoice flex text-uppercase">
           <span>Print</span>
           <svg class="icon icon-print" viewBox="0 0 485.212 485.212">
             <rect x="151.636" y="363.906" width="151.618" height="30.331"></rect>
@@ -29,110 +29,24 @@
       </div>
     </div>
     <!--Invoice items details section -->
-    <div class="invoice-item-details">
-      <!-- <table>
-        <thead>
-          <tr>
-            <th colspan="2">Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="2">Prwan & chicken</td>
-            <td>2</td>
-            <td>640</td>
-          </tr>
-          <tr>
-            <td colspan="2">Prwan</td>
-            <td>1</td>
-            <td>240</td>
-          </tr>
-          <tr>
-            <td colspan="2">Prwan & chicken</td>
-            <td>2</td>
-            <td>640</td>
-          </tr>
-          <tr>
-            <td colspan="2">Prwan & chicken</td>
-            <td>2</td>
-            <td>640</td>
-          </tr>
-          <tr>
-            <td colspan="2">Prwan & chicken</td>
-            <td>2</td>
-            <td>640</td>
-          </tr>
-          <tr>
-            <td colspan="2">Prwan & chicken</td>
-            <td>2</td>
-            <td>640</td>
-          </tr>
-        </tbody>
-      </table> -->
-      <div class="table">
-        <div class="table-header p-14-20 border-bottom border-top" *ngIf="headers && headers.length > 0">
-          <ng-container *ngFor="let header of headers">
-            <div [ngStyle]="{ 'flex-basis': header.size }">
-              {{ header.key }}
-            </div>
-          </ng-container>
-        </div>
-        <div class="table-body" *ngIf="invoiceData && invoiceData.length > 0">
-          <div class="row p-14-20 border-bottom" *ngFor="let data of invoiceData">
-            <ng-container *ngFor="let col of data.row; let idx = index">
-              <div [ngStyle]="{
-                    'flex-basis': headers[idx].size
-                  }">
-                {{ col.value }}
-              </div>
-            </ng-container>
-          </div>
-        </div>
-      </div>
-
-
+    <div class="invoice-item-details" *ngIf="invoice && invoice.items && invoice.items.length>0">
+      <app-table [columns-name]="headers" [table-data]="invoice.items" [custom-css]="'custom-table'"></app-table>
     </div>
 
     <!--Sub Total and Grand total section-->
-    <div class="price-section">
-      <!-- <table>
-        <tbody>
-          <tr class="border-none">
-            <td colspan="2"></td>
-            <td>Sub Total</td>
-            <td>4379,00</td>
-          </tr>
-          <tr class="border-none">
-            <td colspan="2"></td>
-            <td>Tax</td>
-            <td>437</td>
-          </tr>
-          <tr class="border-none">
-            <td colspan="2"></td>
-            <td>Discount</td>
-            <td>43</td>
-          </tr>
-          <tr class="border-none">
-            <td colspan="2"></td>
-            <td>Grand Total</td>
-            <td>4379,00</td>
-          </tr>
-        </tbody>
-      </table> -->
+    <div class="price-section flex">
       <div class="empty-div"></div>
-      <div class="invoice-cart-entities">
+      <div class="invoice-cart-entities flex flex-fd-col">
         <span>Sub Total</span>
-        <span>Tax({{(invoice.tax*100)/invoice.subTotal}}%)</span>
-        <span>Discount</span>
+        <span>Tax ({{invoice.cart.taxPercentage}}%)</span>
+        <span>Discount ({{invoice.cart.discountPercentage}}%)</span>
         <span class="grand-total">Grand Total</span>
       </div>
-      <div class="invoice-cart-stats">
-        <span>&#8377; {{invoice.subTotal}}</span>
-        <span>&#8377; {{invoice.tax}}</span>
-        <span>&#8377; {{invoice.discount}}</span>
-        <span class="grand-total-amount">&#8377; {{invoice.grandTotal}}</span>
+      <div class="invoice-cart-stats flex flex-fd-col">
+        <span>&#8377; {{invoice.cart.subTotal}}</span>
+        <span>&#8377; {{invoice.cart.taxAmount}}</span>
+        <span>&#8377; {{invoice.cart.discountAmount}}</span>
+        <span class="grand-total-amount">&#8377; {{invoice.cart.grandTotal}}</span>
       </div>
     </div>
   </div>

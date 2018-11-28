@@ -9,9 +9,9 @@
     </div>
 
     <div class="invoice-list">
-      <ng-container *ngFor="let invoice of listOfInvoice">
+      <div [ngClass]="{'selected': (selectedInvoice && invoice.id === selectedInvoice.id)}" *ngFor="let invoice of listOfInvoice;let i=index">
         <app-invoice [invoice]="invoice" (invoice-clicked)="onClickedInvoice($event)"></app-invoice>
-      </ng-container>
+      </div>
     </div>
   </ng-container>
 </div>

@@ -1,16 +1,3 @@
-# invoice-app
-Invoice app is based on Angular and uses angular cli.
-
-Steps to run app :
-
-1. npm i
-2. ng serve
-
-To get production version : 
-
-ng build --prod
-
-
 # InvoiceApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.

@@ -229,7 +229,7 @@ label > .required {
   color: red;
 }
 
-input::placeholder {
+input::placeholder,textarea::placeholder {
   color: #cfcfcf;
 }
 
@@ -287,23 +287,18 @@ select:focus {
     border: 1px solid red;
 } */
 
-.uppercase {
-  text-transform: uppercase;
-}
-.table-header {
-  display: flex;
-}
-.table-header > div:last-child,
-.table-body .row > div:last-child {
-  text-align: right;
-}
-.table-header > div {
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: #aaaaaa;
-}
 
-.row {
-  display: flex;
+@media only screen and (max-width: 600px) {
+  .modal-content {
+    margin: 10px;
+    width: 390px;
+  }
+
+  .top-panel{
+    flex-direction: column;
+  }
+
+  .bottom-panel{
+    flex-direction: column;
+  }
 }

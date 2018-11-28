@@ -1,26 +1,23 @@
 <div class="invoice" *ngIf="invoice" (click)="onInvoiceClick(invoice)">
-    <div class="invoice-number">
-      <h4 class="invoice-id">
-        INV.# - {{invoice.id}}
+  <div class="invoice-number">
+    <h4 class="invoice-id">
+      INV.# - {{invoice.id}}
     </h4>
-      <div class="invoice-time" *ngIf="!todayInvoice">
-        {{invoice.timeStamp | date:'h:mm a - M/d/yy'}}
-      </div>
-      <div class="invoice-time" *ngIf="todayInvoice">
-          Today
-        </div>
+    <div class="invoice-time">
+      {{invoice.timeStamp | datePipe}}
     </div>
-    <div class="invoice-details">
-      <div class="items">
-        Items - {{invoice.items.length}}
+  </div>
+  <div class="invoice-details">
+    <div class="items">
+      Items - {{invoice.items.length}}
+    </div>
+    <div class="invoice-customer-price-details">
+      <div class="customer-details">
+        {{invoice.customer.name}}
       </div>
-      <div class="invoice-customer-price-details">
-        <div class="customer-details">
-          {{invoice.customer.name}}
-        </div>
-        <div class="price">
-            &#8377; {{invoice.grandTotal}}
-        </div>
+      <div class="price">
+        &#8377; {{invoice.cart.grandTotal}}
       </div>
     </div>
   </div>
+</div>

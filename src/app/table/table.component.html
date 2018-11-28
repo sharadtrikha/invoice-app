@@ -1,0 +1,14 @@
+<div class="table" *ngIf="columns && columns.length>0 && tableContent && tableContent.length>0">
+  <div class="table-header flex border-top border-bottom p-14-20">
+    <div class="header-cell text-uppercase" [ngClass]="customCss" [ngStyle]="{'flex-basis.%' : getFlexBasis()}" *ngFor="let col of columns;let idx=index">
+      {{col}}
+    </div>
+  </div>
+  <div class="table-body">
+    <div *ngFor="let data of tableContent" class="row flex border-bottom p-14-20">
+      <div *ngFor="let col of columns" class="row-cell" [ngClass]="customCss" [ngStyle]="{'flex-basis.%' : getFlexBasis()}">
+        {{data[col]}}
+      </div>
+    </div>
+  </div>
+</div>

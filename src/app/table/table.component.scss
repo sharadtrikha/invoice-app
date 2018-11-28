@@ -1,0 +1,13 @@
+.table {
+    .table-header {
+        .header-cell {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #aaaaaa;
+        }
+    }
+    .table-body {
+        max-height: 217px;
+        overflow-y: auto;
+    }
+}

@@ -1,20 +1,19 @@
-<div class="container">
-  <header>
+ <div class="container">
+  <header class="app-header">
     <h1>Dashboard</h1>
   </header>
 
   <div class="flex-container">
-      <ng-container *ngIf="invoiceList && invoiceList.length>0">
-    <div class="flex-item invoice-list">
-      <!-- <p (click)="openModal()">Click</p> -->
-      <!--Displays list of invoices-->
-      <app-invoice-list [invoice-list]="invoiceList" (selected-invoice)="onSelectedInvoice($event)"></app-invoice-list>
-    </div>
-    <div class="flex-item invoice-detail">
-      <!--Displays details of selected invoice-->
-      <app-invoice-detail [invoice-detail]="selectedInvoice"></app-invoice-detail>
-    </div>
-  </ng-container>
+    <ng-container *ngIf="invoiceList && invoiceList.length>0">
+      <div class="flex-item invoice-list">
+
+        <app-invoice-list [invoice-list]="invoiceList" (selected-invoice)="onSelectedInvoice($event)"></app-invoice-list>
+      </div>
+      <div class="flex-item invoice-detail">
+
+        <app-invoice-detail [invoice-detail]="selectedInvoice"></app-invoice-detail>
+      </div>
+    </ng-container>
   </div>
 
   <button class="add-invoice-button" (click)="openModal()">
@@ -22,8 +21,9 @@
       alt="Add button">
   </button>
 
-  <app-modal *ngIf="!modalState"  modal-header="Create New Invoice" sub-modal-header="order no: {{currentOrderIndex}}"
-   (close-modal)="onModalClose($event)">
+  <app-modal *ngIf="!modalState" modal-header="Create New Invoice" sub-modal-header="order no: {{currentOrderIndex}}"
+    (close-modal)="onModalClose($event)">
     <app-create-invoice (on-invoice-save)="onModalClose($event)"></app-create-invoice>
   </app-modal>
-</div>
+</div> 
+ <!-- <app-table></app-table>  -->

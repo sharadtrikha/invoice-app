@@ -9,40 +9,124 @@
                 "mobileNumber": 7723996691,
                 "pincode": 462001
             },
-            "discount": 12,
-            "tax": 10,
             "items": [
                 {
                     "item": "Item 1",
-                    "price": 300,
-                    "quantity": 2
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
+                },{
+                    "item": "Item 1",
+                    "quantity": 2,
+                    "price": 300
                 }
             ],
-            "timeStamp": "1542563585666",
-            "grandTotal": 300,
-            "subTotal": 300
+            "cart": {
+                "taxPercentage": 12.5,
+                "taxAmount": 150,
+                "discountPercentage": 10,
+                "discountAmount": 122,
+                "subTotal": 300,
+                "grandTotal": 800
+            },
+            "timeStamp": 1542563585666
         },
         {
             "id": "1",
             "customer": {
-                "name": "Vikas",
+                "name": "Sharad",
                 "address": "B25 khaksha complex bhopal",
                 "emailId": "sharad@gmail.com",
                 "mobileNumber": 7723996691,
                 "pincode": 462001
             },
-            "discount": 12,
-            "tax": 10,
             "items": [
                 {
                     "item": "Item 1",
-                    "price": 300,
-                    "quantity": 3
+                    "quantity": 2,
+                    "price": 300
                 }
             ],
-            "timeStamp": "1542563585666",
-            "grandTotal": 500,
-            "subTotal": 300
+            "cart": {
+                "taxPercentage": 12.5,
+                "taxAmount": 150,
+                "discountPercentage": 10,
+                "discountAmount": 122,
+                "subTotal": 300,
+                "grandTotal": 800
+            },
+            "timeStamp": 1542563585666
         }
     ]
 }

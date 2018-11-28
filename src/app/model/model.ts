@@ -3,8 +3,14 @@ export interface Invoice {
     timeStamp: number;
     items: Array<Item>;
     customer: Customer;
-    tax: number;
-    discount: number;
+    cart: Cart;
+}
+
+export interface Cart {
+    taxPercentage: number;
+    taxAmount: number;
+    discountPercentage: number;
+    discountAmount: number;
     subTotal: number;
     grandTotal: number;
 }

@@ -15,23 +15,11 @@ export class CreateInvoiceComponent implements OnInit {
   taxAmount: number = 0;
   discountAmount: number = 0;
   totalAmount: number = 0;
+  taxPercentage: number;
+  discountPercentage: number;
 
-  headers = [
-    {
-      key: 'Item',
-      size: '60%'
-    },
-    {
-      key: 'Quantity',
-      size: '20%'
-    },
-    {
-      key: 'Price - ₹',
-      size: '20%'
-    }
-  ];
-
-  invoiceData = [];
+  headers: Array<string> = ['item', 'quantity', 'price'];
+  tableData: Array<Item> = [];
 
   @ViewChild('customerForm') customerForm: NgForm;
   @ViewChild('itemName') itemNameInputControl: ElementRef;
@@ -49,39 +37,37 @@ export class CreateInvoiceComponent implements OnInit {
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit() {
-    //this.calculateSubTotal();
+    this.intializeCustomer();
   }
 
   onCustomerFormSubmit() {
     this.customer = this.customerForm.value;
     this.customerFormSubmitted = true;
-    console.log(this.customer);
   }
 
   onSkipClicked() {
+    this.intializeCustomer();
     this.customerDetailsSkipped = true;
   }
 
+  intializeCustomer() {
+    this.customer.name = this.customer.address = this.customer.emailId = '';
+    this.customer.mobileNumber = this.customer.pincode = null;
+  }
+
   onEditCustomerDetails() {
-    this.customerFormSubmitted = false;
+    this.customerFormSubmitted = this.customerDetailsSkipped = false;
   }
 
   onInvoiceDataSubmit(invoiceData: NgForm) {
     let tableData = invoiceData.value;
     if (tableData && tableData.item && tableData.price && tableData.quantity) {
       invoiceData.reset();
-      // invoiceData.resetForm();
       this.itemNameInputControl.nativeElement.focus();
-      let invoiceItem = [];
-      for (let keys in tableData) {
-        invoiceItem.push({
-          key: keys,
-          value: tableData[keys]
-        });
-      }
-
-      this.invoiceData.push({
-        row: invoiceItem
+      this.tableData.push({
+        item: tableData.item,
+        price: tableData.price,
+        quantity: tableData.quantity
       });
 
       this.calculateSubTotal();
@@ -90,25 +76,24 @@ export class CreateInvoiceComponent implements OnInit {
 
   calculateSubTotal() {
     this.subTotalAmount = 0;
-    this.invoiceData.forEach(data_ => {
-      this.subTotalAmount =
-        this.subTotalAmount + (data_.row[2].value as number);
+    this.tableData.forEach(data_ => {
+      if (data_) {
+        this.subTotalAmount = this.subTotalAmount + data_.price;
+      }
     });
 
     this.onTaxChange(this.taxAmount);
     this.onDiscountChange(this.discountAmount);
     this.onGrandTotalChange();
-    // this.onTaxChange();
-    //return this.subTotalAmount;
   }
 
   onTaxChange(value): void {
-    this.taxAmount = (value / 100) * this.subTotalAmount;
+    this.taxAmount = Math.round((value / 100) * this.subTotalAmount);
     this.onGrandTotalChange();
   }
 
   onDiscountChange(value): void {
-    this.discountAmount = (value / 100) * this.subTotalAmount;
+    this.discountAmount = Math.round((value / 100) * this.subTotalAmount);
     this.onGrandTotalChange();
   }
 
@@ -118,35 +103,28 @@ export class CreateInvoiceComponent implements OnInit {
   }
 
   onSaveInvoice() {
-    let items: Array<Item> = [];
-    this.invoiceData.forEach(item_ => {
-      if (item_ && item_.row) {
-        let temp = {};
-        item_.row.forEach(data_ => {
-          temp[data_.key] = data_.value;
-        });
-        items.push(temp as Item);
-      }
-    });
 
     let invoice: Invoice = {
-      id: this.invoiceService.getLocalInvoiceList().length + 1,
+      id: (this.invoiceService.getLocalInvoiceList().length + 1).toString(),
       customer: {
-        name: this.customer.name,
-        address: this.customer.address,
-        emailId: this.customer.emailId,
-        mobileNumber: this.customer.mobileNumber,
-        pincode: this.customer.pincode
+        name: this.customerDetailsSkipped ? 'Unknown User' : this.customer.name,
+        address: this.customerDetailsSkipped ? '' : this.customer.address,
+        emailId: this.customerDetailsSkipped ? '' : this.customer.emailId,
+        mobileNumber: this.customerDetailsSkipped ? undefined : this.customer.mobileNumber,
+        pincode: this.customerDetailsSkipped ? undefined : this.customer.pincode
       },
-      subTotal: this.subTotalAmount,
-      discount: this.discountAmount,
-      tax: this.taxAmount,
-      grandTotal: this.totalAmount,
-      items: items,
+      items: this.tableData,
+      cart: {
+        taxAmount: this.taxAmount,
+        discountAmount: this.discountAmount,
+        taxPercentage: this.taxPercentage ? this.taxPercentage : 0,
+        discountPercentage: this.discountPercentage ? this.discountPercentage : 0,
+        subTotal: this.subTotalAmount,
+        grandTotal: this.totalAmount
+      },
       timeStamp: new Date().getTime()
     };
 
-    console.log(invoice);
     this.invoiceService.onAddInvoice$.next(invoice);
     this.onInvoiceSave.emit(true);
   }

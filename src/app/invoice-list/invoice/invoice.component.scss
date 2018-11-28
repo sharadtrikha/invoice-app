@@ -1,0 +1,42 @@
+.invoice {
+    border-bottom: 1px solid #58626C;
+    color: #828e9d;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+    .invoice-number {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .invoice-id {
+            font-weight: normal;
+            font-size: 1rem;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+    .invoice-details {
+        margin-top: 5%;
+        .items {
+            font-size: 13px;
+        }
+        .invoice-customer-price-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            .customer-details {
+                text-transform: capitalize;
+                color: #66a7ff;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+            .price {
+                font-size: 14px;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
